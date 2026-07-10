@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlantGuard AI | Advanced Plant Disease Identification</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+
+  <!-- LOGIN PAGE -->
+  <main class="login-screen" id="loginScreen">
+    <div class="login-hero">
+      <div class="tag">🌿 Advanced CSP Project Website</div>
+      <h1>PlantGuard <span>AI</span><br>Plant Disease Identification</h1>
+      <p>Professional single-file website for “Modern Approaches of Plant Disease Identification Using Machine Learning”. It includes login, dashboard, crop disease database, image upload demo, prevention guide, and smart farmer-friendly UI.</p>
+      <div class="badges">
+        <div class="badge">CNN / ML Concept</div>
+        <div class="badge">Leaf Image Upload</div>
+        <div class="badge">Plant + Tree Database</div>
+        <div class="badge">Responsive Website</div>
+      </div>
+    </div>
+
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p>Login to open your smart plant health dashboard.</p>
+      <form id="loginForm">
+        <div class="field">
+          <label>Email ID</label>
+          <input type="email" id="email" placeholder="example@gmail.com" required />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Minimum 4 characters" required />
+        </div>
+        <div class="login-row">
+          <label><input type="checkbox" id="remember" /> Remember me</label>
+          <span>Demo login</span>
+        </div>
+        <div class="login-actions">
+          <button class="btn primary" type="submit">Login & Open Website 🚀</button>
+          <button class="btn secondary" type="button" onclick="guestLogin()">Continue as Guest</button>
+        </div>
+        <div class="message" id="loginMessage">Please enter a valid email and password with at least 4 characters.</div>
+      </form>
+    </div>
+  </main>
+
+  <!-- APP -->
+  <div class="app" id="app">
+    <nav>
+      <div class="logo">PlantGuard <span>AI</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#detect">Detect</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#plants">Plants</a>
+        <a href="#assistant">AI Help</a>
+        <a href="#guide">Guide</a>
+        <button class="btn secondary" onclick="toggleTheme()" title="Change theme">🌓</button>
+        <span class="user-pill" id="userName">Guest</span>
+        <button class="btn secondary" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <header>
+      <div class="hero">
+        <span class="tag">🤖 Modern Approaches Using Machine Learning</span>
+        <h1>Smart Disease Detection for Plants and Trees</h1>
+        <p>Upload a leaf image and get a demo diagnosis report with disease name, confidence score, symptoms, prevention steps, and crop-care suggestions. This is perfect for your minor project or CSP presentation.</p>
+        <div class="hero-buttons">
+          <button class="btn primary" onclick="goTo('detect')">Start Diagnosis</button>
+          <button class="btn secondary" onclick="goTo('plants')">Explore Plant Database</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="scan-ring"><div class="scan-inner">🌱</div></div>
+        <h2>AI Health Scanner</h2>
+        <p style="color:#cffff0;line-height:1.6;margin-top:8px">Computer vision idea + disease knowledge + farmer-friendly guidance.</p>
+        <div class="mini-grid">
+          <div class="mini"><b>96%</b><p>Demo Accuracy UI</p></div>
+          <div class="mini"><b>40+</b><p>Plants & Trees</p></div>
+          <div class="mini"><b>24/7</b><p>Smart Support</p></div>
+          <div class="mini"><b>Fast</b><p>Instant Report</p></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="features">
+      <div class="section-title"><h2>Advanced Website Features</h2><p>Designed with a modern UI for project demonstration, farmer awareness, crop protection, and machine learning explanation.</p></div>
+      <div class="grid">
+        <div class="card"><div class="icon">🔐</div><h3>Login System</h3><p>Includes email login, guest mode, remember option, and logout using browser local storage.</p></div>
+        <div class="card"><div class="icon">📷</div><h3>Leaf Image Upload</h3><p>Upload a leaf photo and instantly preview the selected image on the website.</p></div>
+        <div class="card"><div class="icon">🤖</div><h3>ML Demo Prediction</h3><p>Shows disease name, confidence score, symptoms, and treatment guidance for presentation.</p></div>
+        <div class="card"><div class="icon">🌦️</div><h3>Smart Dashboard</h3><p>Live changing temperature, humidity, soil moisture, and disease risk indicators.</p></div>
+        <div class="card"><div class="icon">🌳</div><h3>Plants and Trees</h3><p>Large crop database including tomato, rice, wheat, mango, banana, coconut, neem, and more.</p></div>
+        <div class="card"><div class="icon">📋</div><h3>Project Flow</h3><p>Explains image collection, preprocessing, CNN classification, and recommendations.</p></div>
+      </div>
+    </section>
+
+    <section id="detect" class="detect-section">
+      <div class="section-title"><h2>Plant Disease Detector</h2><p>This is a frontend demo. For real accuracy, connect this website to a trained CNN model using Flask, Django, or TensorFlow.js.</p></div>
+      <div class="detect">
+        <div class="panel upload">
+          <h2>Select Plant / Tree</h2>
+          <p style="color:#d8ffe2;line-height:1.6;margin-top:8px">First select the plant or tree, then upload a leaf image.</p>
+          <div class="field" style="text-align:left;margin-top:18px">
+            <label>Plant or Tree Name</label>
+           <select id="selectedPlant" onchange="showSelectedPlantInfo()">
+
+  <option value="" disabled selected>-- Select Plant or Tree --</option>
+
+  <!-- 🌾 CROPS -->
+  <optgroup label="🌾 Field Crops">
+    <option value="Rice">🌾 Rice</option>
+    <option value="Wheat">🌾 Wheat</option>
+    <option value="Maize">🌽 Maize</option>
+    <option value="Cotton">🌿 Cotton</option>
+    <option value="Groundnut">🥜 Groundnut</option>
+  </optgroup>
+
+  <!-- 🥦 VEGETABLES -->
+  <optgroup label="🥦 Vegetables">
+    <option value="Tomato">🍅 Tomato</option>   <!-- ✅ ADDED HERE -->
+    <option value="Potato">🥔 Potato</option>
+    <option value="Brinjal">🍆 Brinjal</option>
+    <option value="Chilli">🌶️ Chilli</option>
+    <option value="Onion">🧅 Onion</option>
+    <option value="Cabbage">🥬 Cabbage</option>
+    <option value="Cauliflower">🥦 Cauliflower</option>
+    <option value="Carrot">🥕 Carrot</option>
+  </optgroup>
+
+  <!-- 🍎 FRUITS -->
+  <optgroup label="🍎 Fruit Trees">
+    <option value="Mango Tree">🥭 Mango Tree</option>
+    <option value="Banana Tree">🍌 Banana Tree</option>
+    <option value="Guava Tree">🍏 Guava Tree</option>
+    <option value="Apple Tree">🍎 Apple Tree</option>
+  </optgroup>
+
+  <!-- 🌳 TREES -->
+  <optgroup label="🌳 Trees">
+    <option value="Neem Tree">🌳 Neem Tree</option>
+    <option value="Coconut Tree">🥥 Coconut Tree</option>
+    <option value="Teak Tree">🌲 Teak Tree</option>
+  </optgroup>
+
+</select>
+          </div>
+          <div id="selectedPlantInfo" class="report-item" style="display:none;text-align:left;margin:14px 0"></div>
+          <label for="leafInput">Choose Image 📸</label>
+          <input type="file" id="leafInput" accept="image/*" />
+          <img id="preview" class="preview" alt="Leaf preview" />
+        </div>
+        <div class="panel">
+          <h2>Diagnosis Report</h2>
+          <p id="empty" style="color:#bdf5ca;margin-top:14px">No image uploaded yet. Select a leaf photo to begin.</p>
+          <div id="result" class="result">
+            <h3 id="diseaseName"></h3>
+            <p id="description"></p>
+            <p><b>Confidence:</b> <span id="confidenceText"></span></p>
+            <div class="bar"><div id="confidenceFill" class="fill"></div></div>
+            <div class="report-list">
+              <div class="report-item"><b>Symptoms:</b> <span id="symptoms"></span></div>
+              <div class="report-item"><b>Suggested Action:</b> <span id="solution"></span></div>
+              <div class="report-item"><b>Prevention:</b> <span id="prevention"></span></div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn primary" style="width:auto" onclick="downloadReport()">Download Report</button>
+              <button class="btn secondary" onclick="shareReport()">Copy Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="history">
+      <div class="section-title"><h2>Diagnosis History</h2><p>Your last uploaded image reports are saved temporarily in this browser for project demo.</p></div>
+      <div class="panel">
+        <div id="historyList" class="report-list"><div class="report-item">No diagnosis history yet.</div></div>
+        <button class="btn secondary" style="margin-top:16px" onclick="clearHistory()">Clear History</button>
+      </div>
+    </section>
+
+    <section id="dashboard">
+      <div class="section-title"><h2>Smart Agriculture Dashboard</h2><p>Sample monitoring panel for plant health and environmental disease-risk conditions.</p></div>
+      <div class="tools">
+        <div class="tool"><h3 id="temp">31°C</h3><p>Field Temperature</p></div>
+        <div class="tool"><h3 id="humidity">68%</h3><p>Humidity Level</p></div>
+        <div class="tool"><h3 id="soil">42%</h3><p>Soil Moisture</p></div>
+        <div class="tool"><h3 id="risk" class="risk-medium">Medium</h3><p>Disease Risk</p></div>
+      </div>
+    </section>
+
+    <section id="plants">
+      <div class="section-title"><h2>Supported Plants and Trees</h2><p>Search or click any crop to view common diseases included in this website database.</p></div>
+      <div class="search-box">
+        <input type="text" id="plantSearch" placeholder="Search plant, tree, or disease..." onkeyup="renderPlants()" />
+        <button class="btn primary" onclick="renderPlants()">Search</button>
+      </div>
+      <div class="plant-list" id="plantList"></div>
+    </section>
+
+    <section id="assistant">
+      <div class="section-title"><h2>AI Farmer Assistant</h2><p>Ask simple plant care questions and get instant project-demo guidance.</p></div>
+      <div class="panel" style="max-width:900px;margin:auto">
+        <div class="field">
+          <label>Ask Question</label>
+          <input type="text" id="aiQuestion" placeholder="Example: How to prevent fungal disease in tomato?" />
+        </div>
+        <button class="btn primary" style="width:auto" onclick="askAssistant()">Ask AI Assistant</button>
+        <div id="aiAnswer" class="report-item" style="margin-top:16px;display:none"></div>
+      </div>
+    </section>
+
+    <section id="guide" class="detect-section">
+      <div class="section-title"><h2>Project Working Flow</h2><p>Use this section while explaining your project in review or viva.</p></div>
+      <div class="timeline">
+        <div class="step"><div class="num">1</div><div class="step-content"><h3>Image Collection</h3><p>Farmer captures the affected leaf using mobile camera or uploads existing field image.</p></div></div>
+        <div class="step"><div class="num">2</div><div class="step-content"><h3>Image Preprocessing</h3><p>The system resizes, cleans, normalizes, and prepares the image for machine learning analysis.</p></div></div>
+        <div class="step"><div class="num">3</div><div class="step-content"><h3>Feature Extraction</h3><p>Color, texture, spots, leaf patterns, and infected regions are observed by image processing or CNN layers.</p></div></div>
+        <div class="step"><div class="num">4</div><div class="step-content"><h3>Disease Classification</h3><p>The trained ML/CNN model predicts whether the leaf is healthy or affected by a particular disease.</p></div></div>
+        <div class="step"><div class="num">5</div><div class="step-content"><h3>Recommendation</h3><p>The website displays disease name, confidence, symptoms, prevention, and treatment suggestions.</p></div></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 PlantGuard AI | Modern Approaches of Plant Disease Identification Using Machine Learning | Batch 270</p>
+    </footer>
+  </div>
+
+  <div class="modal" id="plantModal">
+    <div class="modal-box">
+      <button class="close" onclick="closeModal()">×</button>
+      <h2 id="modalTitle"></h2>
+      <p><b>Common Diseases:</b> <span id="modalDiseases"></span></p>
+      <p><b>Care Tip:</b> <span id="modalTip"></span></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
